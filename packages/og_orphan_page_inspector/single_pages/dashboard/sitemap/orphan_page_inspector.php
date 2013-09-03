@@ -126,7 +126,7 @@ if ($dh->canRead()) { ?>
                 <th>Creation Date</th>
             </tr>
             
-            <?php if(count($orphan_pages) > 0) { foreach($orphan_pages->getPage() as $page) { ?>
+            <?php if($orphan_pages->getTotal () > 0) { foreach($orphan_pages->getPage() as $page) { ?>
             
             <tr>
                 <td><input type="checkbox" id="cID-<?php echo $page->getCollectionID(); ?>" value="<?php echo $page->getCollectionID(); ?>" name="cID[]" /></td>

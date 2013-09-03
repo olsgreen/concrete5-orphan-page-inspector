@@ -32,7 +32,7 @@ if ($dh->canRead()) { ?>
     }
     
     function resetOperationSelection() {
-           $('#ccm-page-list-multiple-operations').val('');
+        $('#ccm-page-list-multiple-operations').val('');
     }
     
     $(function () { 
@@ -63,6 +63,21 @@ if ($dh->canRead()) { ?>
                 } else {
                     resetOperationSelection();   
                 }
+                
+            }
+            
+        });
+        
+        $('#ccm_check_all').change(function () {
+            
+            
+            if($(this).attr('checked')) {
+                
+                $('#ccm_do_orphan_action_form input[type=checkbox]').attr('checked', 'checked');         
+                
+            } else {
+                
+                $('#ccm_do_orphan_action_form input[type=checkbox]').removeAttr('checked');      
                 
             }
             
@@ -105,7 +120,7 @@ if ($dh->canRead()) { ?>
         <table class="ccm-results-list  ">
             
             <tr>
-                <th></th>
+                <th><input type="checkbox" id="ccm_check_all" /></th>
                 <th>Page Name</th>
                 <th>Page Path</th>
                 <th>Page ID</th>

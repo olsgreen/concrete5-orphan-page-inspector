@@ -5,15 +5,14 @@
 <?php 
 $form = Loader::helper('form/page_selector');
 $dh = Loader::helper('concrete/dashboard/sitemap');
+
 if ($dh->canRead()) { ?>
 
 <script type="text/javascript">
     
     function setItemsPerPage(items) {
         
-        <?php $qs = preg_replace('/ccm_items_per_page=[0-9]*(&)?/i', '', $_SERVER['QUERY_STRING']); ?>
         var location = '<?php echo View::url($c->getCollectionPath()); ?>?ccm_items_per_page=' + parseInt(items);
-        location += '<?php if(strlen($qs) > 0) { echo '&' . $qs; } ?>';
         window.location = location;
         
     }
@@ -107,11 +106,11 @@ if ($dh->canRead()) { ?>
             <div style="float: right;">
                 <label for="ccm-items-per-page" style="display: inline-block; vertical-align: bottom;">Items Per Page:</label>
                 <select id="ccm-items-per-page" style="width: 70px;" onchange="setItemsPerPage(this.value);">
-                    <option<?php echo (isset($_GET['ccm_items_per_page']) && $_GET['ccm_items_per_page'] == '10') ?  " selected='selected'" : ''; ?>>10</option>
-                    <option<?php echo (isset($_GET['ccm_items_per_page']) && $_GET['ccm_items_per_page'] == '20') ?  " selected='selected'" : ''; ?>>20</option>
-                    <option<?php echo (isset($_GET['ccm_items_per_page']) && $_GET['ccm_items_per_page'] == '50') ?  " selected='selected'" : ''; ?>>50</option>
-                    <option<?php echo (isset($_GET['ccm_items_per_page']) && $_GET['ccm_items_per_page'] == '100') ?  " selected='selected'" : ''; ?>>100</option>
-                    <option<?php echo (isset($_GET['ccm_items_per_page']) && $_GET['ccm_items_per_page'] == '200') ?  " selected='selected'" : ''; ?>>200</option>
+                    <option<?php echo ('10' === $itemsPerPage) ?  " selected='selected'" : ''; ?>>10</option>
+                    <option<?php echo ('20' === $itemsPerPage) ?  " selected='selected'" : ''; ?>>20</option>
+                    <option<?php echo ('50' === $itemsPerPage) ?  " selected='selected'" : ''; ?>>50</option>
+                    <option<?php echo ('100' === $itemsPerPage) ?  " selected='selected'" : ''; ?>>100</option>
+                    <option<?php echo ('200' === $itemsPerPage) ?  " selected='selected'" : ''; ?>>200</option>
                 </select> 
             </div>
             

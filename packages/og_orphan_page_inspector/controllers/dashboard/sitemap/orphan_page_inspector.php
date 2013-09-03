@@ -3,7 +3,9 @@ defined('C5_EXECUTE') or die("Access Denied.");
 
 class DashboardSitemapOrphanPageInspectorController extends Controller {
     
-    public function view() {
+    public function view() {        
+        
+        $this->setItemsPerPage();
         
         $this->set('orphan_pages', $this->getOrphanPageList());
         
@@ -12,6 +14,22 @@ class DashboardSitemapOrphanPageInspectorController extends Controller {
         } elseif($_GET['error']) {
             $this->set('message', 'Ooops! There was a problem moving the pages, please try again.');   
         }
+        
+    }
+    
+    private function setItemsPerPage() {
+        
+        $itemsPerPage = 10;
+        
+        if(isset($_GET['ccm_items_per_page']) && intval($_GET['ccm_items_per_page']) > 0) {            
+            $itemsPerPage = $_GET['ccm_items_per_page'];            
+        } elseif(isset($_SESSION['og_orphan_ccm_items_per_page']) && intval($_SESSION['og_orphan_ccm_items_per_page']) > 0) {            
+            $itemsPerPage = $_SESSION['og_orphan_ccm_items_per_page'];            
+        }
+        
+        $_SESSION['og_orphan_ccm_items_per_page'] = $itemsPerPage;
+        
+        $this->set('itemsPerPage', $itemsPerPage);
         
     }
     
@@ -46,7 +64,7 @@ class DashboardSitemapOrphanPageInspectorController extends Controller {
         $pageList = new ItemList();
         $pageList->setItems($pages);
         
-        (isset($_GET['ccm_items_per_page'])) ? $pageList->setItemsPerPage(intval($_GET['ccm_items_per_page'])) :  $pageList->setItemsPerPage(10);
+        (isset($_SESSION['og_orphan_ccm_items_per_page'])) ? $pageList->setItemsPerPage(intval($_SESSION['og_orphan_ccm_items_per_page'])) :  $pageList->setItemsPerPage(10);
         
         return $pageList;
         

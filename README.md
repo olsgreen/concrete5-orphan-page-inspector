@@ -1,4 +1,4 @@
-*Concrete5 Orphan Page Inspector*
+#Concrete5 Orphan Page Inspector#
 
 Adds the ability to view, move & delete orphan pages.
 

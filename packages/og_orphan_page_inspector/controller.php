@@ -16,7 +16,7 @@ class OgOrphanPageInspectorPackage extends Package
 {
     protected $pkgHandle = 'og_orphan_page_inspector';
     protected $appVersionRequired = '5.6';
-    protected $pkgVersion = '0.10';
+    protected $pkgVersion = '0.91';
     
     public function getPackageDescription() {
         return t("Package adding the ability to view, move & delete orphan pages.");

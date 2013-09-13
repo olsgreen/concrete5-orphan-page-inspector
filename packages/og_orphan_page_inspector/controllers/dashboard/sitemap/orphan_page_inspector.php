@@ -64,7 +64,7 @@ class DashboardSitemapOrphanPageInspectorController extends Controller {
         $pageList = new ItemList();
         $pageList->setItems($pages);
         
-        (isset($_SESSION['og_orphan_ccm_items_per_page'])) ? $pageList->setItemsPerPage(intval($_SESSION['og_orphan_ccm_items_per_page'])) :  $pageList->setItemsPerPage(10);
+        $pageList->setItemsPerPage(isset($_SESSION['og_orphan_ccm_items_per_page']) ? intval($_SESSION['og_orphan_ccm_items_per_page']) : 10);
         
         return $pageList;
         

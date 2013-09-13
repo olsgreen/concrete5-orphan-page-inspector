@@ -119,7 +119,7 @@ if ($dh->canRead()) { ?>
         <table class="ccm-results-list  ">
             
             <tr>
-                <th><input type="checkbox" id="ccm_check_all" /></th>
+                <th><input type="checkbox" id="ccm_check_all"<?php echo ($orphan_pages->getTotal() === 0) ? " disabled=\"disabled\"" : "";?>/></th>
                 <th>Page Name</th>
                 <th>Page Path</th>
                 <th>Page ID</th>
